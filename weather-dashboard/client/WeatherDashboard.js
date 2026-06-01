@@ -4,6 +4,7 @@ import './WeatherDashboard.css';
 import CurrentWeather from './components/CurrentWeather';
 import Forecast from './components/Forecast';
 import SearchBar from './components/SearchBar';
+import GamesPortal from './components/GamesPortal';
 
 function WeatherDashboard() {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -12,6 +13,7 @@ function WeatherDashboard() {
   const [error, setError] = useState(null);
   const [city, setCity] = useState('London');
   const [unit, setUnit] = useState('metric');
+  const [showGames, setShowGames] = useState(false);
 
   useEffect(() => {
     fetchWeatherData(city);
@@ -59,11 +61,18 @@ function WeatherDashboard() {
     return 'clear';
   };
 
+  if (showGames) {
+    return <GamesPortal onBack={() => setShowGames(false)} />;
+  }
+
   return (
     <div className={`weather-dashboard ${getWeatherBackground()}`}>
       <div className="weather-container">
-        <header className="dashboard-header">
-          <h1>🌤️ Weather Dashboard</h1>
+        <header className="bbc-header">
+          <div className="bbc-logo-section">
+            <div className="bbc-logo">BBC Weather</div>
+            <p className="bbc-tagline">Accurate weather forecast & climate information</p>
+          </div>
           <div className="header-controls">
             <button
               className={`unit-btn ${unit === 'metric' ? 'active' : ''}`}
@@ -101,6 +110,29 @@ function WeatherDashboard() {
             {forecast && <Forecast forecast={forecast} unit={unit} />}
           </>
         )}
+
+        <footer className="bbc-footer">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h4>About BBC Weather</h4>
+              <p>Providing accurate weather forecasts and climate information to the public since 1922.</p>
+            </div>
+            <div className="footer-section">
+              <h4>Additional Resources</h4>
+              <ul>
+                <li><a href="#weather-alerts">Weather Alerts</a></li>
+                <li><a href="#climate-data">Climate Data</a></li>
+                <li><a href="#air-quality">Air Quality</a></li>
+              </ul>
+            </div>
+            <div className="footer-section">
+              <button className="recreation-btn" onClick={() => setShowGames(true)}>
+                🎯 Recreation
+              </button>
+              <p className="credits">© 2024 BBC Weather Dashboard | All Rights Reserved</p>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   );
