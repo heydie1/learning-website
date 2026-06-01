@@ -1,0 +1,131 @@
+.weather-dashboard {
+  min-height: 100vh;
+  padding: 20px;
+  transition: background 0.5s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.weather-dashboard.clear {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.weather-dashboard.cloudy {
+  background: linear-gradient(135deg, #7c8da6 0%, #5a6678 100%);
+}
+
+.weather-dashboard.rainy {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+.weather-dashboard.snowy {
+  background: linear-gradient(135deg, #a8dadc 0%, #8ecae6 100%);
+}
+
+.weather-dashboard.stormy {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+}
+
+.weather-dashboard.foggy {
+  background: linear-gradient(135deg, #cbd5e0 0%, #a0aec0 100%);
+}
+
+.weather-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.dashboard-header h1 {
+  font-size: 36px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.unit-btn {
+  padding: 10px 20px;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.unit-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.unit-btn.active {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.error-message {
+  background: rgba(255, 68, 68, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.error-message p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: white;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .weather-dashboard {
+    padding: 10px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+}
